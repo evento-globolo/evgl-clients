@@ -1,0 +1,5 @@
+name: evgl_client
+description: Transport-neutral Dart client contracts for Evento Globolo.
+version: 0.1.0
+environment:
+  sdk: ">=3.3.0 <4.0.0"
