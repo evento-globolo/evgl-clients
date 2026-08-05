@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.16)
+project(evgl_client_cpp LANGUAGES CXX)
+add_library(evgl_client_cpp INTERFACE)
+target_include_directories(evgl_client_cpp INTERFACE include)
+target_compile_features(evgl_client_cpp INTERFACE cxx_std_17)
