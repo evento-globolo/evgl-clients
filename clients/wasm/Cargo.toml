@@ -1,0 +1,10 @@
+[package]
+name = "evgl-client-wasm"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Dependency-free WASM ABI helpers for Evento Globolo"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+path = "src/lib.rs"

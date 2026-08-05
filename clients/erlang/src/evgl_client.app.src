@@ -1,0 +1,7 @@
+{application, evgl_client, [
+  {description, "Erlang endpoint helpers for Evento Globolo"},
+  {vsn, "0.1.0"},
+  {modules, []},
+  {registered, []},
+  {applications, [kernel, stdlib]}
+]}.
