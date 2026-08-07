@@ -1,0 +1,5 @@
+{
+  "name": "@evento-globolo/evgl-client-deno",
+  "version": "0.1.0",
+  "exports": "./mod.ts"
+}

@@ -1,0 +1,6 @@
+{
+  "name": "@evento-globolo/evgl-client-bun",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": "./src/index.ts"
+}
