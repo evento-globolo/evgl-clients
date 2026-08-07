@@ -2,6 +2,7 @@
   "autoload": {
     "psr-4": {
       "EventoGlobolo\\": "src/",
+      "EventoGlobolo\\Client\\": "src/",
       "EventoGlobolo\\EvglClient\\": "src/"
     }
   },
