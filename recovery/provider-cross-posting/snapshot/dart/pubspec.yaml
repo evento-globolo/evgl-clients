@@ -1,0 +1,6 @@
+name: evgl_clients
+version: 0.1.0
+environment:
+  sdk: ^3.5.0
+dependencies:
+  http: ^1.2.0
