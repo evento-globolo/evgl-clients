@@ -5,7 +5,28 @@ import tomllib
 
 ROOT = Path(__file__).resolve().parents[1]
 DEPENDENCIES = {'evento-globolo/evgl-libs', 'evento-globolo/evgl-interfaces'}
-TARGETS = {'gleam': 'clients/gleam', 'erlang': 'clients/erlang', 'elixir': 'clients/elixir', 'dart': 'clients/dart', 'rust': 'clients/rust', 'java': 'clients/java', 'golang': 'clients/go', 'python': 'clients/python', 'ruby': 'clients/ruby', 'php': 'clients/php', 'nodejs': 'clients/typescript/nodejs', 'deno': 'clients/typescript/deno', 'bun': 'clients/typescript/bun', 'edge': 'clients/typescript/edge'}
+TARGETS = {
+    'c': 'clients/c',
+    'cpp': 'clients/cpp',
+    'zig': 'clients/zig',
+    'gleamlang': 'clients/gleam',
+    'erlang': 'clients/erlang',
+    'elixir': 'clients/elixir',
+    'dart': 'clients/dart',
+    'rust': 'clients/rust',
+    'rust-wasm': 'clients/wasm',
+    'java': 'clients/java',
+    'golang': 'clients/go',
+    'python3': 'clients/python',
+    'ruby': 'clients/ruby',
+    'php': 'clients/php',
+    'typescript-nodejs': 'clients/typescript/nodejs',
+    'typescript-deno': 'clients/typescript/deno',
+    'typescript-bun': 'clients/typescript/bun',
+    'typescript-edge': 'clients/typescript/edge',
+    'kotlin': 'clients/kotlin',
+    'swift': 'clients/swift',
+}
 FIELDS = {"org", "name", "version", "description", "license"}
 
 def fail(message: str) -> None:

@@ -52,7 +52,7 @@ name = "evgl-clients-typescript"
 adapter = "node"
 
 [targets.golang]
-dir = "clients/golang"
+dir = "clients/go"
 adapter = "go"
 
 [targets.python]
@@ -103,11 +103,11 @@ dir = "clients/swift"
 adapter = "none"
 
 [targets.gleamlang]
-dir = "clients/gleamlang"
+dir = "clients/gleam"
 adapter = "none"
 
 [targets.python3]
-dir = "clients/python3"
+dir = "clients/python"
 adapter = "none"
 
 [targets.typescript-nodejs]

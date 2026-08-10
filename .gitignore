@@ -15,3 +15,11 @@ temp/worktrees
 /clients/java/target/
 /clients/kotlin/.gradle/
 /clients/kotlin/build/
+/clients/*/target/
+/clients/*/Cargo.lock
+/clients/erlang/_build/
+/clients/erlang/rebar.lock
+/clients/gleam/build/
+/clients/gleam/manifest.toml
+__pycache__/
+*.py[cod]
