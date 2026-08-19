@@ -1,0 +1,10 @@
+{
+  "apiSurface": "clients/api-surface.json",
+  "apiSurfaceSha256": "cf530971de7e0bfbaac64f95a777289ab2fea70cefbebb7b28ce9b231668e362",
+  "coordinate": "evento-globolo/evgl-clients",
+  "runtime": "zig",
+  "schemaId": "https://zpkg.tech/schemas/client-api.schema.json",
+  "schemaVersion": 1,
+  "target": "zig",
+  "zedTarget": "zig"
+}
