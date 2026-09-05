@@ -1,6 +1,6 @@
 {
   "apiSurface": "clients/api-surface.json",
-  "apiSurfaceSha256": "cf530971de7e0bfbaac64f95a777289ab2fea70cefbebb7b28ce9b231668e362",
+  "apiSurfaceSha256": "f1764c2543a2232711aceab8008184d6ef98b4bd5b05284ddaf8ba441bfc8e4b",
   "coordinate": "evento-globolo/evgl-clients",
   "runtime": "swift",
   "schemaId": "https://zpkg.tech/schemas/client-api.schema.json",

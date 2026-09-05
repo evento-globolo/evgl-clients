@@ -30,6 +30,7 @@ verify-matrix = "node scripts/verify-client-matrix.mjs"
 
 [targets.repository]
 dir = "."
+name = "evgl-clients-repository"
 
 [targets.c]
 dir = "clients/c"
@@ -51,12 +52,12 @@ name = "evgl-clients-typescript"
 adapter = "node"
 
 [targets.golang]
-dir = "clients/golang"
-adapter = "none"
+dir = "clients/go"
+adapter = "go"
 
 [targets.python]
 dir = "clients/python"
-adapter = "none"
+adapter = "python"
 
 [targets.ruby]
 dir = "clients/ruby"
@@ -68,7 +69,7 @@ adapter = "none"
 
 [targets.rust]
 dir = "clients/rust"
-adapter = "none"
+adapter = "rust"
 
 [targets.rust-wasm]
 dir = "clients/wasm"
@@ -76,11 +77,10 @@ adapter = "node"
 
 [targets.dart]
 dir = "clients/dart"
-adapter = "none"
+adapter = "dart"
 
 [targets.gleam]
 dir = "clients/gleam"
-adapter = "none"
 
 [targets.erlang]
 dir = "clients/erlang"
@@ -96,7 +96,7 @@ adapter = "java"
 
 [targets.kotlin]
 dir = "clients/kotlin"
-adapter = "java"
+adapter = "none"
 
 [targets.swift]
 dir = "clients/swift"
