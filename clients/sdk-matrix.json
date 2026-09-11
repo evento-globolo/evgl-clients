@@ -36,7 +36,7 @@
       "zed_target": "gleam"
     },
     "golang": {
-      "dir": "clients/go",
+      "dir": "clients/golang",
       "runtime": "golang",
       "zed_target": "golang"
     },

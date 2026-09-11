@@ -5,6 +5,6 @@
   "runtime": "golang",
   "schemaId": "https://zpkg.tech/schemas/client-api.schema.json",
   "schemaVersion": 1,
-  "target": "golang",
-  "zedTarget": "golang"
+  "target": "extension-golang",
+  "zedTarget": "extension-golang"
 }
