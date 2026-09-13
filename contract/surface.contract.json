@@ -1,0 +1,297 @@
+{
+  "$schema": "./surface.schema.json",
+  "$comment": "Declared exported interface for every client under clients/. Validated against surface.schema.json; enforced by contract/bin/check_surface.py in tests, in CI, and at pre-publish time. Edit this file to change the contract \u2014 never to paper over a client that drifted.",
+  "contractVersion": "1.0.0",
+  "product": "evgl",
+  "provenance": {
+    "source": "/sessions/rcw-01hrcgtaar2wmaahcznwfnm3/mnt/codes/evento-globolo/evgl-interfaces/openapi.yaml",
+    "sourceSha256": "6ab8ccc5663fb3c5e8ecdb6cd4e1f30ebc01ac555867d2e2c45ef43d876c273c",
+    "sourceKind": "openapi",
+    "canonicalRepo": "evgl-interfaces",
+    "generatedBy": "contract/bin/derive_contract.py --from-openapi",
+    "generatedAt": "2026-08-23"
+  },
+  "conventions": {
+    "clientType": "Client",
+    "errorTypes": [
+      "Error"
+    ],
+    "naming": {
+      "default": "snake_case",
+      "byLanguage": {
+        "c": "snake_case",
+        "cpp": "snake_case",
+        "dart": "camelCase",
+        "elixir": "snake_case",
+        "erlang": "snake_case",
+        "gleam": "snake_case",
+        "gleamlang": "snake_case",
+        "go": "PascalCase",
+        "golang": "PascalCase",
+        "java": "camelCase",
+        "kotlin": "camelCase",
+        "php": "camelCase",
+        "python": "snake_case",
+        "python3": "snake_case",
+        "ruby": "snake_case",
+        "rust": "snake_case",
+        "swift": "camelCase",
+        "typescript": "camelCase",
+        "wasm": "snake_case",
+        "zig": "camelCase"
+      }
+    }
+  },
+  "interfaceSchemas": [
+    {
+      "name": "Event",
+      "vendoredPath": "contract/schemas/event.json",
+      "upstreamRepo": "evgl-interfaces",
+      "upstreamPath": "schemas/event.json",
+      "sha256": "953315d737cbc971a6b976c168c41199d46302487941ead315d94cba78dc2adc"
+    },
+    {
+      "name": "Event",
+      "vendoredPath": "contract/schemas/event.schema.json",
+      "upstreamRepo": "evgl-interfaces",
+      "upstreamPath": "schemas/event.schema.json",
+      "sha256": "ec6602d00f8efd664ca09fb80954326905e3a57c49c663028f14798f5c01d410"
+    }
+  ],
+  "types": {
+    "Event": {
+      "$ref": "./schemas/event.schema.json"
+    }
+  },
+  "operations": [
+    {
+      "name": "create_event",
+      "http": {
+        "method": "POST",
+        "path": "/api/v1/events"
+      },
+      "params": [
+        {
+          "name": "body",
+          "in": "body",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object"
+      }
+    },
+    {
+      "name": "get_event",
+      "http": {
+        "method": "GET",
+        "path": "/api/v1/events/{id}"
+      },
+      "params": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object"
+      }
+    },
+    {
+      "name": "health",
+      "http": {
+        "method": "GET",
+        "path": "/healthz"
+      },
+      "params": [],
+      "returns": {
+        "type": "object"
+      }
+    },
+    {
+      "name": "list_events",
+      "http": {
+        "method": "GET",
+        "path": "/api/v1/events"
+      },
+      "params": [],
+      "returns": {
+        "type": "object"
+      }
+    },
+    {
+      "name": "websocket",
+      "http": {
+        "method": "GET",
+        "path": "/ws"
+      },
+      "params": [],
+      "returns": {
+        "type": "object"
+      }
+    }
+  ],
+  "languages": {
+    "c": {
+      "tier": "warn",
+      "naming": "snake_case",
+      "enforceArity": false,
+      "exclude": [],
+      "symbolPrefix": "evgl_",
+      "clientType": "evgl_client",
+      "minCoverage": 0.0
+    },
+    "cpp": {
+      "tier": "warn",
+      "naming": "snake_case",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 0.0
+    },
+    "dart": {
+      "tier": "warn",
+      "naming": "camelCase",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "EvglClient",
+      "minCoverage": 0.0
+    },
+    "elixir": {
+      "tier": "warn",
+      "naming": "snake_case",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "EvglClient",
+      "minCoverage": 20.0
+    },
+    "erlang": {
+      "tier": "warn",
+      "naming": "snake_case",
+      "enforceArity": false,
+      "exclude": [],
+      "minCoverage": 20.0
+    },
+    "gleam": {
+      "tier": "warn",
+      "naming": "snake_case",
+      "enforceArity": false,
+      "exclude": [],
+      "minCoverage": 20.0
+    },
+    "gleamlang": {
+      "tier": "warn",
+      "naming": "snake_case",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 0.0
+    },
+    "go": {
+      "tier": "warn",
+      "naming": "PascalCase",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 20.0
+    },
+    "golang": {
+      "tier": "warn",
+      "naming": "PascalCase",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 0.0
+    },
+    "java": {
+      "tier": "warn",
+      "naming": "camelCase",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 20.0
+    },
+    "kotlin": {
+      "tier": "warn",
+      "naming": "camelCase",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 20.0
+    },
+    "php": {
+      "tier": "warn",
+      "naming": "camelCase",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 20.0
+    },
+    "python": {
+      "tier": "warn",
+      "naming": "snake_case",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 20.0
+    },
+    "python3": {
+      "tier": "gate",
+      "naming": "snake_case",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 100.0
+    },
+    "ruby": {
+      "tier": "warn",
+      "naming": "snake_case",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 20.0
+    },
+    "rust": {
+      "tier": "warn",
+      "naming": "snake_case",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 20.0
+    },
+    "swift": {
+      "tier": "warn",
+      "naming": "camelCase",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 20.0
+    },
+    "typescript": {
+      "tier": "warn",
+      "naming": "camelCase",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 20.0
+    },
+    "wasm": {
+      "tier": "gate",
+      "naming": "snake_case",
+      "enforceArity": false,
+      "exclude": [],
+      "minCoverage": 100.0
+    },
+    "zig": {
+      "tier": "warn",
+      "naming": "camelCase",
+      "enforceArity": false,
+      "exclude": [],
+      "minCoverage": 0.0
+    }
+  },
+  "waivers": []
+}
