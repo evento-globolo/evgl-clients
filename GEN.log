@@ -1,0 +1,16 @@
+{
+  "apiSurfaceSha256": "f1764c2543a2232711aceab8008184d6ef98b4bd5b05284ddaf8ba441bfc8e4b",
+  "changed": [
+    "/Users/maca5/codes/.claude-fleet/scratch/merge/evento-globolo_evgl-clients__12/clients/client-contract-matrix.json",
+    "/Users/maca5/codes/.claude-fleet/scratch/merge/evento-globolo_evgl-clients__12/clients/contract-manifest.json",
+    "/Users/maca5/codes/.claude-fleet/scratch/merge/evento-globolo_evgl-clients__12/clients/go/.zed-client-contract.json",
+    "/Users/maca5/codes/.claude-fleet/scratch/merge/evento-globolo_evgl-clients__12/clients/golang/.zed-client-contract.json"
+  ],
+  "errors": [],
+  "minimumTargets": 15,
+  "mode": "write",
+  "prefix": "evgl",
+  "repository": "evento-globolo/evgl-clients",
+  "schemaVersion": 1,
+  "standardTargets": 20
+}
