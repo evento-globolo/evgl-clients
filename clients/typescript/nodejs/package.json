@@ -1,0 +1,13 @@
+{
+  "engines": {
+    "node": ">=18"
+  },
+  "exports": "./src/index.ts",
+  "files": [
+    "src"
+  ],
+  "name": "@evento-globolo/evgl-client-nodejs",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0"
+}

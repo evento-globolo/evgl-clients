@@ -34,7 +34,9 @@ Each language is also exposed as a Zed target from the root `.zpkg.toml`. A `.zp
 | Kotlin | `clients/kotlin` | `build.gradle.kts` |
 | Swift | `clients/swift` | `Package.swift` |
 
-The SDK methods align with the shared edge contract: `health`, `getConfig`, `emitEvent`, and `emitAlert`. Every newly added implementation accepts an injectable transport so callers can supply platform networking, retries, telemetry, and deterministic tests without changing the public API.
+The SDKs preserve the shared edge methods (`health`, `getConfig`, `emitEvent`, and `emitAlert`) and expose the canonical provider surface: capability discovery, connections, OAuth start, event create/list, idempotent cross-posting, jobs, and job WebSocket URL construction. Browser clients return the WebSocket URL but do not pretend they can attach a bearer header; deployments must use the same-site proxy or a reviewed ephemeral-ticket flow. Every implementation accepts an injectable or caller-owned transport so retries, telemetry, platform networking, and deterministic tests remain outside the contract core.
+
+The exact recovered clients remain under `recovery/provider-cross-posting/` as provenance. Their compatible behavior has been ported into the canonical TypeScript, Rust, Go, and Dart slices rather than published as a competing package layout.
 
 ## Validation
 

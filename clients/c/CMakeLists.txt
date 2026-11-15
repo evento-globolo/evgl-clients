@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.16)
+project(evgl_client_c LANGUAGES C)
+add_library(evgl_client_c STATIC src/client.c)
+target_include_directories(evgl_client_c PUBLIC include)
+target_compile_features(evgl_client_c PUBLIC c_std_11)

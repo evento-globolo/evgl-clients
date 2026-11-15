@@ -6,6 +6,11 @@ export interface ClientOptions {
   fetchImpl?: FetchLike;
 }
 
+export interface CrossPostOptions {
+  targets: unknown[];
+  idempotencyKey: string;
+}
+
 export class ClientError extends Error {
   constructor(public readonly status: number, public readonly responseBody: string) {
     super(`HTTP ${status}: ${responseBody}`);
@@ -30,10 +35,41 @@ export class Client {
   getConfig(): Promise<unknown> { return this.request("GET", "/api/config"); }
   emitEvent(payload: unknown): Promise<unknown> { return this.request("POST", "/api/events", payload); }
   emitAlert(payload: unknown): Promise<unknown> { return this.request("POST", "/api/alerts", payload); }
+  providers(): Promise<unknown> { return this.request("GET", "/v1/providers"); }
+  connections(): Promise<unknown> { return this.request("GET", "/v1/connections"); }
+  startOAuth(provider: string): Promise<unknown> {
+    return this.request("POST", `/v1/oauth/${encodeURIComponent(provider)}/start`, {});
+  }
+  events(): Promise<unknown> { return this.request("GET", "/v1/events"); }
+  createEvent(payload: unknown): Promise<unknown> {
+    return this.request("POST", "/v1/events", payload);
+  }
+  job(jobId: string): Promise<unknown> {
+    return this.request("GET", `/v1/jobs/${encodeURIComponent(jobId)}`);
+  }
+  crossPost(eventId: string, options: CrossPostOptions): Promise<unknown> {
+    return this.request(
+      "POST",
+      `/v1/events/${encodeURIComponent(eventId)}/cross-post`,
+      { targets: options.targets },
+      { "idempotency-key": options.idempotencyKey },
+    );
+  }
+  jobWebSocketUrl(jobId: string): string {
+    const url = new URL(`/v1/jobs/${encodeURIComponent(jobId)}/ws`, `${this.baseUrl}/`);
+    url.protocol = url.protocol === "https:" ? "wss:" : "ws:";
+    return url.toString();
+  }
 
-  async request(method: string, path: string, payload?: unknown): Promise<unknown> {
+  async request(
+    method: string,
+    path: string,
+    payload?: unknown,
+    extraHeaders: Record<string, string> = {},
+  ): Promise<unknown> {
     const headers = new Headers({ accept: "application/json" });
     if (this.token) headers.set("authorization", `Bearer ${this.token}`);
+    for (const [name, value] of Object.entries(extraHeaders)) headers.set(name, value);
     let body: string | undefined;
     if (payload !== undefined) {
       headers.set("content-type", "application/json");

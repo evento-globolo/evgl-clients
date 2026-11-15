@@ -7,6 +7,20 @@ bash scripts/validate-client-layout.sh
 node --test tests/*.test.mjs
 node --check src/index.mjs
 
+work="$(mktemp -d)"
+# Hosted runners clean their temporary directory. Keeping this bounded local
+# directory avoids destructive cleanup commands in agent and developer flows.
+if command -v cc >/dev/null 2>&1; then
+  cc -std=c11 -Wall -Wextra -Werror -Iclients/c/include -c clients/c/src/client.c -o "$work/evgl-client-c.o"
+else echo 'SKIP c compiler'; fi
+if command -v c++ >/dev/null 2>&1; then
+  printf '#include "evgl/client.hpp"\nint main(){evgl::Client c{"https://example.invalid"}; return c.endpoint("events").empty();}\n' |
+    c++ -std=c++17 -Wall -Wextra -Werror -Iclients/cpp/include -x c++ - -o "$work/evgl-client-cpp"
+else echo 'SKIP c++ compiler'; fi
+if command -v zig >/dev/null 2>&1; then
+  zig test clients/zig/src/root.zig
+else echo 'SKIP zig'; fi
+
 if command -v cargo >/dev/null 2>&1; then
   cargo test --manifest-path clients/rust/Cargo.toml --all-targets
   cargo test --manifest-path clients/wasm/Cargo.toml --all-targets
@@ -28,21 +42,21 @@ if command -v php >/dev/null 2>&1; then
   php clients/php/tests/client_test.php
 else echo 'SKIP php'; fi
 
-work="$(mktemp -d)"
-trap 'rm -rf "$work"' EXIT
 if command -v javac >/dev/null 2>&1 && command -v java >/dev/null 2>&1; then
-  mapfile -t java_sources < <(find clients/java/src -name '*.java' -type f | sort)
+  java_sources=()
+  while IFS= read -r source; do java_sources+=("$source"); done < <(find clients/java/src -name '*.java' -type f | sort)
   javac -d "$work/java" "${java_sources[@]}"
   java -cp "$work/java" io.github.eventoglobolo.evglclient.ClientContractTest
 else echo 'SKIP java'; fi
 if command -v tsc >/dev/null 2>&1 && command -v node >/dev/null 2>&1; then
-  (cd clients/typescript && rm -rf dist && tsc -p tsconfig.json && node test/smoke.mjs)
+  (cd clients/typescript && tsc -p tsconfig.json && node test/smoke.mjs)
 else echo 'SKIP typescript: node/tsc unavailable'; fi
 if command -v kotlinc >/dev/null 2>&1 && command -v java >/dev/null 2>&1; then
-  mapfile -t kotlin_sources < <(find clients/kotlin/src -name '*.kt' -type f | sort)
+  kotlin_sources=()
+  while IFS= read -r source; do kotlin_sources+=("$source"); done < <(find clients/kotlin/src -name '*.kt' -type f | sort)
   kotlinc "${kotlin_sources[@]}" -include-runtime -d "$work/kotlin.jar"
   java -jar "$work/kotlin.jar"
 else echo 'SKIP kotlin'; fi
-if command -v swift >/dev/null 2>&1; then
+if command -v swift >/dev/null 2>&1 && swift package describe --package-path clients/swift >/dev/null 2>&1; then
   swift test --package-path clients/swift
-else echo 'SKIP swift'; fi
+else echo 'SKIP swift: SwiftPM toolchain/SDK unavailable or mismatched'; fi
