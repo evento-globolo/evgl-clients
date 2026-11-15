@@ -1,0 +1,15 @@
+// AttoLang transport-neutral Evento Globolo SDK route helpers.
+// An HTTP transport, JSON codec and secure URL parser are intentionally not
+// simulated. Consumers must validate destination origins and token provenance.
+pub fnc health_path(): string { return "/healthz"; }
+pub fnc config_path(): string { return "/api/config"; }
+pub fnc emit_event_path(): string { return "/api/events"; }
+pub fnc emit_alert_path(): string { return "/api/alerts"; }
+pub fnc providers_path(): string { return "/v1/providers"; }
+pub fnc connections_path(): string { return "/v1/connections"; }
+pub fnc list_events_path(): string { return "/v1/events"; }
+pub fnc create_event_path(): string { return "/v1/events"; }
+
+// Call only with a nonempty token supplied by a trusted credential manager.
+// Never log or persist the returned value.
+pub fnc authorization_value(string token): string { return "Bearer " + token; }
