@@ -44,3 +44,18 @@ The SDK methods align with the shared edge contract: `health`, `getConfig`, `emi
 ```
 
 `test.sh` runs every locally available toolchain and reports explicit skips for unavailable ecosystems. CI can install the full matrix without changing the repository contract.
+
+## AttoLang source preview
+
+`clients/atto/src/routes.atto` contains transport-neutral AttoLang helpers
+for the existing SDK's fixed endpoint paths. The Rust integration tests compare
+their source-level contracts against the Rust SDK and validate that new dynamic
+paths cannot silently bypass identifier checks:
+
+```bash
+cargo test --manifest-path clients/rust/Cargo.toml --all-targets
+```
+
+This is source-contract parity only. Atto native/wasm compilation, HTTP
+transport and JSON serialization remain separate release requirements. New
+test, code generation and automation scripts should be Rust, not Python.
