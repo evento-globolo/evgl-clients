@@ -4,6 +4,7 @@ root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$root"
 
 required=(
+  clients/atto/src/routes.atto
   clients/gleam/gleam.toml
   clients/erlang/rebar.config
   clients/elixir/mix.exs
@@ -39,7 +40,7 @@ for dep in \
   grep -Fq "$dep" .zpkg.toml || { printf 'missing Zed dependency: %s\n' "$dep" >&2; exit 1; }
 done
 
-targets=(gleam erlang elixir dart rust rust-wasm java golang python ruby php nodejs kotlin swift)
+targets=(atto gleam erlang elixir dart rust rust-wasm java golang python ruby php nodejs kotlin swift)
 for target in "${targets[@]}"; do
   grep -Fq "[targets.$target]" .zpkg.toml || { printf 'missing Zed target: %s\n' "$target" >&2; exit 1; }
 done
