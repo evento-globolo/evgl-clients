@@ -83,3 +83,8 @@ adapter = "java"
 
 [targets.swift]
 dir = "clients/swift"
+
+# AttoLang source preview: pure endpoint and authorization-value helpers.
+[targets.atto]
+dir = "clients/atto"
+adapter = "none"
