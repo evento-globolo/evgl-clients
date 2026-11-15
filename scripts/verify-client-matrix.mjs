@@ -31,6 +31,7 @@ for (const dependency of ["evento-globolo/evgl-interfaces", "evento-globolo/evgl
 
 const canonicalTargets = new Map([
   ["repository", "."],
+  ["atto", "clients/atto"],
   ["nodejs", "clients/typescript"],
   ["golang", "clients/go"],
   ["python", "clients/python"],
