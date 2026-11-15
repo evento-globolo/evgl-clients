@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
   "languages": {
+    "attolang": {"dir": "clients/atto", "sentinel": "src/routes.atto"},
     "gleamlang": {"dir": "clients/gleam", "sentinel": "gleam.toml"},
     "erlang": {"dir": "clients/erlang", "sentinel": "rebar.config"},
     "elixir": {"dir": "clients/elixir", "sentinel": "mix.exs"},
