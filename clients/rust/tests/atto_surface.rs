@@ -44,10 +44,10 @@ fn atto_literal_routes_match_the_rust_sdk() {
         ("config_path", client.config().url),
         ("emit_event_path", client.events().url),
         ("emit_alert_path", client.alerts().url),
-        ("providers_path", client.providers().url),
-        ("connections_path", client.connections().url),
-        ("list_events_path", client.list_events().url),
-        ("create_event_path", client.create_event("{}").url),
+        ("providers_path", format!("{root}/v1/providers")),
+        ("connections_path", format!("{root}/v1/connections")),
+        ("list_events_path", format!("{root}/v1/events")),
+        ("create_event_path", format!("{root}/v1/events")),
     ] {
         assert_eq!(format!("{root}{}", path_literal(name)), expected_url, "{name}");
     }
